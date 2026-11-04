@@ -1,0 +1,53 @@
+{
+  "name": "work-encourager",
+  "version": "1.0.0",
+  "description": "上班鼓励器 —— 桌面实时计薪小组件（同款：牛马鼓励器）",
+  "main": "main.js",
+  "author": "work-encourager",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node scripts/serve.js",
+    "desktop": "electron .",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "com.encourager.work",
+    "productName": "上班鼓励器",
+    "asar": false,
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "artifactName": "上班鼓励器-Windows-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "上班鼓励器"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.productivity",
+      "artifactName": "上班鼓励器-Mac-${arch}-${version}.${ext}"
+    },
+    "dmg": {
+      "title": "上班鼓励器"
+    }
+  }
+}
